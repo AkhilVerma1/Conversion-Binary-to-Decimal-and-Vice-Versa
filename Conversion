@@ -1,8 +1,29 @@
-   class Conversion{
-     public Conversion(){
-      decimalToBinary(10);
-     }
-     public void decimalToBinary(int value){
+//driver code
+public class Main(){
+   pubic static void main(String[] val){
+   new Conversion(); // default constructor will be called ..
+   }
+}
+
+class Conversion{
+    public Conversion(){
+        System.out.println("Object Created Successfully.!");
+        decimalToBinary(125);
+        binaryToDecimal(1111101);
+    }
+    public void binaryToDecimal(int value){
+        int binarySequence = 1; //1,2,4,8,16..
+        int decimalValue = 0, remainder = 0;
+        while(value>0){
+            remainder = value % 10;
+            value /= 10;  // value = value / 10;
+            decimalValue += (remainder * binarySequence); //picking up the last digit and multiplying it with the binary sequence.
+            binarySequence *= 2; // binarySequence = binarySequence * 2;
+        }
+        System.out.println(decimalValue);
+
+    }
+    public void decimalToBinary(int value){
         //first method.
         int temp = value;
         int arr[] = new int[11];
@@ -22,7 +43,6 @@
         temp = value;
         int valueToPrint = 0, multiplier = 1, remainder = 0;
         while(temp > 0){
-          // for temp value 10.
             remainder = temp % 2; // 0, 1, 0, 1;
             temp = temp / 2; // 5, 2, 1, 0;
             valueToPrint = valueToPrint + (multiplier * remainder); // 0+0=0, 0+10=10, 10+0=10, 10+1000=1010;
