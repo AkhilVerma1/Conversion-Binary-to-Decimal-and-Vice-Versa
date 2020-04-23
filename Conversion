@@ -1,0 +1,33 @@
+   class Conversion{
+     public Conversion(){
+      decimalToBinary(10);
+     }
+     public void decimalToBinary(int value){
+        //first method.
+        int temp = value;
+        int arr[] = new int[11];
+        int index = 0;
+        while(temp > 0){
+            arr[index] = temp%2;
+            temp = temp/2;
+            ++index;
+        }
+        System.out.println("1024  512  256  128  64   32   16   8    4    2    1");
+        for (int i = 10; i >= 0; --i) {
+            System.out.print(" "+ arr[i] +"   ");
+        }
+        System.out.println("\nAnother method..!");
+        //another method.
+        //without the use of array.
+        temp = value;
+        int valueToPrint = 0, multiplier = 1, remainder = 0;
+        while(temp > 0){
+          // for temp value 10.
+            remainder = temp % 2; // 0, 1, 0, 1;
+            temp = temp / 2; // 5, 2, 1, 0;
+            valueToPrint = valueToPrint + (multiplier * remainder); // 0+0=0, 0+10=10, 10+0=10, 10+1000=1010;
+            multiplier = multiplier * 10; //10,100,1000
+        }
+        System.out.println(valueToPrint);
+    }
+}
